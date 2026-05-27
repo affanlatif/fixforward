@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { 
   ArrowLeft, 
   MapPin, 
@@ -20,9 +21,9 @@ import {
   Wrench
 } from "lucide-react";
 
-export default function MachineDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
-  const id = resolvedParams.id;
+export default function MachineDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
   const [newComment, setNewComment] = useState("");
